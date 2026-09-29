@@ -1,5 +1,7 @@
 import { Header } from "@/components/layout/Header";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { PartnerSection } from "@/components/sections/PartnerSection";
+import { TagFilterSection } from "@/components/sections/TagFilterSection";
 
 export default function Home() {
   return (
@@ -7,6 +9,8 @@ export default function Home() {
       <Header dark />
       <main>
         <HeroSection />
+        <PartnerSection />
+        <TagFilterSection />
       </main>
     </div>
   );
