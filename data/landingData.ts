@@ -1,4 +1,11 @@
-import { Category, Course, PartnerLogo, Testimonial } from "@/types/landing";
+import {
+  Category,
+  Course,
+  CourseModule,
+  CourseReview,
+  PartnerLogo,
+  Testimonial,
+} from "@/types/landing";
 
 export const partnerLogos: PartnerLogo[] = [
   { id: "1", src: "/images/logoipsum_1.png", alt: "Logoipsum 1" },
@@ -131,5 +138,74 @@ export const testimonials: Testimonial[] = [
     role: "Inspired Creator",
     image: "/images/comm3.png",
     body: '"As a creator, ByteSpace has been a game-changer for me. The Course Editor is user-friendly, and the support from the community is incredible. It\'s fulfilling to see my courses making a positive impact on learners globally."',
+  },
+];
+
+export const modules: CourseModule[] = [
+  {
+    title: "Module 1: Introduction to Digital Assets",
+    description: "Lay the groundwork with lessons like 'Understanding Digital Elements' and 'Navigating Design Software Tools.' Dive into the essentials of digital asset creation.",
+    count: 8,
+  },
+  {
+    title: "Module 2: Design Principles for Impact",
+    description: "Master the principles that drive impactful designs with lessons such as 'Color Theory in Digital Design' and 'Typography Essentials.'",
+    count: 12,
+  },
+  {
+    title: "Module 3: Advanced Techniques in Digital Creation",
+    description: "Explore advanced workflows, creative tools, and practical techniques for making your ideas real.",
+    count: 10,
+  },
+  {
+    title: "Module 4: User-Centric Design Strategies",
+    description: "Understand design thinking and user experience essentials. Craft digital assets with a focus on people.",
+    count: 9,
+  },
+  {
+    title: "Module 5: Interactive Media and Engagement",
+    description: "Create immersive digital experiences by combining interactive presentations and multimedia elements.",
+    count: 11,
+  },
+  {
+    title: "Module 6: Project Showcase and Critique",
+    description: "Present your work with confidence, collaborate with peers, and refine your creative practice.",
+    count: 7,
+  },
+  {
+    title: "Module 7: Optimizing Digital Assets for Various Platforms",
+    description: "Adapt your digital creations for mobile platforms, social media, and the modern web.",
+    count: 8,
+  },
+];
+
+export const courseReviews: CourseReview[] = [
+  {
+    name: "PurePearl Studio",
+    role: "UI/UX Designer",
+    date: "a year ago",
+    body: "The course provided me with a comprehensive understanding of digital asset creation. The lessons were in-depth, practical, and immediately applicable to my work. Highly recommended!",
+    initials: "PS",
+  },
+  {
+    name: "Albert Flores",
+    role: "UI/UX Designer",
+    date: "a year ago",
+    body: "This course transformed my approach to digital design. The combination of theory, hands-on exercises, and real-world applications made it a truly enriching experience.",
+    initials: "AF",
+  },
+  {
+    name: "Cody Fisher",
+    role: "UI/UX Designer",
+    date: "a year ago",
+    body: "The project showcase and critique module created a collaborative environment where I could showcase my work, receive valuable feedback, and refine my skills.",
+    initials: "CF",
+  },
+  {
+    name: "Brooklyn Simmons",
+    role: "UI/UX Designer",
+    date: "a year ago",
+    body: "The lessons on optimizing digital assets for various platforms were particularly insightful. The course adapts to the evolving digital landscape.",
+    initials: "BS",
   },
 ];

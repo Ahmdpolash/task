@@ -29,3 +29,17 @@ export interface PartnerLogo {
   src: string;
   alt: string;
 }
+
+export interface CourseModule {
+  title: string;
+  description: string;
+  count: number;
+}
+
+export interface CourseReview {
+  name: string;
+  role: string;
+  date: string;
+  body: string;
+  initials: string;
+}
