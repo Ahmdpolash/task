@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/Header";
 import { CategoriesSection } from "@/components/sections/CategoriesSection";
 import { CoursesSection } from "@/components/sections/CoursesSection";
+import { GrowthPromoSection } from "@/components/sections/GrowthPromoSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { PartnerSection } from "@/components/sections/PartnerSection";
 import { TagFilterSection } from "@/components/sections/TagFilterSection";
@@ -15,6 +16,7 @@ export default function Home() {
         <TagFilterSection />
         <CoursesSection />
         <CategoriesSection />
+        <GrowthPromoSection />
       </main>
     </div>
   );
