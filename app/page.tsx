@@ -1,4 +1,5 @@
 import { Header } from "@/components/layout/Header";
+import { CategoriesSection } from "@/components/sections/CategoriesSection";
 import { CoursesSection } from "@/components/sections/CoursesSection";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { PartnerSection } from "@/components/sections/PartnerSection";
@@ -13,6 +14,7 @@ export default function Home() {
         <PartnerSection />
         <TagFilterSection />
         <CoursesSection />
+        <CategoriesSection />
       </main>
     </div>
   );
