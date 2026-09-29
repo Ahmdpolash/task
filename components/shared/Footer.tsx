@@ -5,12 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import Container from "./Container";
-import { useCreateSuscribtionMutation } from "@/lib/redux/features/subscription/subscriptionApi";
 import React, { useState } from "react";
 import { toast } from "sonner";
 
 export default function Footer() {
-  const [createSubscription, { isLoading }] = useCreateSuscribtionMutation();
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
@@ -22,14 +21,16 @@ export default function Footer() {
     }
 
     try {
+      setIsLoading(true);
       setErrorMsg(null);
-
-      await createSubscription({ email }).unwrap();
-
+      // Simulate newsletter subscription
       setShowSuccessModal(true);
+      toast.success("Thank you for subscribing to our newsletter!");
       setEmail("");
     } catch (error: any) {
-      toast.error("You hvae already subscribed to our newsletter.");
+      toast.error("Unable to subscribe at this moment.");
+    } finally {
+      setIsLoading(false);
     }
   };
 

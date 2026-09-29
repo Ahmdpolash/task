@@ -2,10 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
-import Providers from "@/lib/Provider";
 import { Navbar } from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,10 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Peptide Resource Platform",
-  description:
-    "AI Peptide Resource Platform   is a platform where you can find resources for AI Peptide",
-  keywords: ["AI Peptide", "Peptide", "AI", "Resource", "Platform"],
+  title: "template",
+  description: "template",
+  keywords: ["template", "template", "template", "template", "template"],
 };
 
 export default function RootLayout({
@@ -35,12 +32,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Toaster position="top-center" />
-        <Providers>
-          <Navbar />
-          {children}
 
-          <Footer />
-        </Providers>
+        {children}
       </body>
     </html>
   );

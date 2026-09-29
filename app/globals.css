@@ -1,7 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=clash-display@600,700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./bytespace.css";
 
-@custom-variant dark (&:is(.dark *));
+:root {
+  --blue: #003be2;
+  --blue-dark: #092bb5;
+  --lime: #d4fb20;
+  --ink: #242528;
+  --muted: #82868e;
+  --soft: #f5f5f6;
+  --line: #e8e9eb;
+  --wrap: 1200px;
+}
 
 @theme inline {
   --color-background: var(--background);
