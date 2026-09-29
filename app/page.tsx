@@ -1,3 +1,4 @@
+import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { CategoriesSection } from "@/components/sections/CategoriesSection";
 import { CommunitySection } from "@/components/sections/CommunitySection";
@@ -10,9 +11,9 @@ import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-[#242528]">
+    <div className="min-h-screen bg-white text-[#242528] flex flex-col justify-between selection:bg-[#d4fb20] selection:text-[#061c6d]">
       <Header dark />
-      <main>
+      <main className="flex-1">
         <HeroSection />
         <PartnerSection />
         <TagFilterSection />
@@ -22,6 +23,7 @@ export default function Home() {
         <CommunitySection />
         <TestimonialsSection />
       </main>
+      <Footer />
     </div>
   );
 }
