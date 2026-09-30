@@ -18,7 +18,7 @@ export default function CreatorPage() {
 
       <main className="flex-1 pb-24">
         {/* Creator Profile Hero */}
-        <section className="w-full bg-[#f8f9fa] border-b border-[#f1f2f4] pt-24 pb-14">
+        <section className="w-full bg-[#f8f9fa] border-b border-[#f1f2f4] pb-14">
           {/* Creator Decorative Banner */}
           <div className="w-full h-44 sm:h-56 bg-gradient-to-r from-[#003be2] via-[#092bb5] to-[#003be2] relative overflow-hidden flex items-center justify-end px-8">
             <div className="absolute inset-0 opacity-15 pointer-events-none bg-[radial-gradient(#d4fb20_1px,transparent_1px)] bg-[size:24px_24px]" />
@@ -87,7 +87,7 @@ export default function CreatorPage() {
                 <div>
                   <strong className="font-['Poppins',sans-serif] font-bold text-3xl text-[#242528] flex items-center gap-1">
                     4.8
-                    <Star size={18} className="fill-[#003be2] text-[#003be2]" />
+                    <Star size={18} className="fill-[#d4fb20] text-[#d4fb20]" />
                   </strong>
                   <span className="text-xs text-[#82868e] mt-0.5 block">Rating</span>
                 </div>

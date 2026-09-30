@@ -61,7 +61,7 @@ export function ProgressCard({ className = "" }: { className?: string }) {
       </strong>
       <div className="h-2 rounded-full bg-[#f1f2f4] overflow-hidden">
         <div
-          className="h-full bg-[#003be2] rounded-full transition-all duration-500"
+          className="h-full bg-[#d4fb20] rounded-full transition-all duration-500"
           style={{ width: "55%" }}
         />
       </div>
@@ -77,7 +77,7 @@ export function HappyStudentsCard({ className = "" }: { className?: string }) {
       <span className="text-xs font-medium text-[#82868e]">Happy Students</span>
       <div className="flex items-center gap-1 text-sm font-semibold text-[#242528]">
         4.5 <span className="text-xs text-[#82868e] font-normal">(240)</span>
-        <Star size={14} className="fill-[#003be2] text-[#003be2] ml-0.5" />
+        <Star size={14} className="fill-[#d4fb20] text-[#d4fb20] ml-0.5" />
       </div>
       <AvatarStack />
     </div>

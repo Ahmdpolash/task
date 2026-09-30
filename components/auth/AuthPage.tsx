@@ -234,12 +234,12 @@ export function AuthPage({ mode }: AuthPageProps) {
 
               {/* Toggle switch between Login / Register */}
               <div className="text-center text-xs text-[#82868e] mt-6">
-                {isRegister ? "Already have an account?" : "New to ByteSpace?"}{" "}
+                {isRegister ? "Already have an account?" : "New user?"}{" "}
                 <Link
-                  href={isRegister ? "/signin" : "/signup"}
+                  href={isRegister ? "/login" : "/register"}
                   className="font-semibold text-[#003be2] hover:underline"
                 >
-                  {isRegister ? "Sign In" : "Create an account"}
+                  {isRegister ? "Login" : "Create an account"}
                 </Link>
               </div>
             </form>

@@ -8,26 +8,19 @@ import {
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[920px] lg:min-h-[1024px] overflow-hidden bg-[#003be2] text-white flex flex-col justify-between pt-24">
+    <section className="relative min-h-[920px] lg:min-h-[1024px] overflow-hidden bg-[#003be2] text-white flex flex-col justify-between pt-[140px] sm:pt-[164px]">
       {/* Decorative Grid Pattern */}
-      <div
-        className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[linear-gradient(to_right,#66a0ff_1px,transparent_1px),linear-gradient(to_bottom,#66a0ff_1px,transparent_1px)] bg-[size:120px_120px]"
-        aria-hidden="true"
-      />
+      <div className="hero-grid" aria-hidden="true" />
 
-      {/* Decorative Blur Glows */}
-      <div
-        className="absolute top-20 left-10 w-72 h-72 bg-blue-400/20 rounded-full blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute top-40 right-10 w-96 h-96 bg-cyan-300/15 rounded-full blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
+      {/* Decorative Hero Shapes matching React version */}
+      <span className="hero-shape hero-ribbon" aria-hidden="true" />
+      <span className="hero-shape hero-cone" aria-hidden="true" />
+      <span className="hero-shape hero-loop" aria-hidden="true" />
+      <span className="hero-shape hero-squiggle" aria-hidden="true" />
 
       {/* Central Headline & Search */}
-      <div className="relative z-20 w-full max-w-[1200px] mx-auto px-6 pt-8 sm:pt-14 flex flex-col items-center text-center">
-        <h1 className="font-['Poppins',sans-serif] font-semibold text-4xl sm:text-5xl lg:text-[68px] leading-[1.15] tracking-tight max-w-[980px]">
+      <div className="relative z-20 w-full max-w-[1200px] mx-auto px-6 flex flex-col items-center text-center">
+        <h1 className="font-['Poppins',sans-serif] font-semibold text-4xl sm:text-5xl lg:text-[72px] leading-[1.18] tracking-[-0.045em] max-w-[1040px]">
           Get Access to Hundreds
           <br className="hidden sm:inline" /> Courses Available
         </h1>
@@ -42,17 +35,14 @@ export function HeroSection() {
       {/* Stage Container */}
       <div className="relative w-full flex justify-center items-end mt-8 overflow-visible">
         {/* Lime Bottom Orbit Arc */}
-        <div
-          className="absolute z-10 -bottom-[800px] sm:-bottom-[880px] lg:-bottom-[820px] left-1/2 -translate-x-1/2 w-[850px] sm:w-[1050px] lg:w-[1150px] h-[850px] sm:h-[1050px] lg:h-[1150px] rounded-full bg-[#d4fb20]"
-          aria-hidden="true"
-        />
+        <div className="hero-orbit" aria-hidden="true" />
 
         {/* Hero Character Image */}
-        <div className="relative z-20 w-full max-w-[760px] px-4 flex justify-center items-end">
+        <div className="relative z-10 w-full max-w-[840px] px-4 flex justify-center items-end pointer-events-none">
           <img
             src="/images/hero_main1.png"
             alt="ByteSpace student online learning"
-            className="w-full max-w-[720px] h-auto object-contain drop-shadow-[0_20px_35px_rgba(7,24,75,0.35)] -mb-2"
+            className="w-full max-w-[820px] h-auto object-contain drop-shadow-[0_20px_30px_rgba(7,24,75,0.25)] -mb-3"
           />
         </div>
 

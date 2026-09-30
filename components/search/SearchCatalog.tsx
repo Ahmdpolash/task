@@ -3,7 +3,7 @@
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Filter, Search, Users } from "lucide-react";
+import { Check, ChevronDown, Filter, Search, Users } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CourseCard } from "@/components/ui/CourseCard";
@@ -19,6 +19,7 @@ export function SearchCatalog() {
     initialCategory === "all" ? "All courses" : initialCategory
   );
   const [sortBy, setSortBy] = useState("popular");
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
 
   const categoriesList = [
     "All courses",
@@ -46,53 +47,73 @@ export function SearchCatalog() {
 
   return (
     <div className="min-h-screen bg-white text-[#242528] flex flex-col justify-between">
-      <Header dark={false} />
+      <Header dark={true} />
 
       <main className="flex-1 pb-24">
-        {/* Search Hero */}
-        <section className="w-full bg-[#f8f9fa] border-b border-[#f1f2f4] pt-28 pb-14">
-          <div className="w-full max-w-[1200px] mx-auto px-6">
-            <nav className="flex items-center gap-2 text-xs text-[#82868e] mb-4">
-              <Link href="/" className="hover:text-[#003be2]">
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-[#242528] font-medium">Courses</span>
-            </nav>
+        {/* Search Hero with Blue Hero Grid matching Image 2 */}
+        <section className="relative overflow-hidden bg-[#003be2] text-white pt-28 sm:pt-36 pb-16 sm:pb-20">
+          <div className="hero-grid absolute inset-0 pointer-events-none" />
 
-            <span className="text-[#003be2] text-xs font-bold tracking-widest uppercase mb-2 block">
-              THE BYTESPACE LIBRARY
-            </span>
-            <h1 className="font-['Poppins',sans-serif] font-semibold text-3xl sm:text-5xl text-[#242528] tracking-tight">
-              Find your next great idea.
+          <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-center">
+            <h1 className="font-['Poppins',sans-serif] font-bold text-3xl sm:text-4xl lg:text-[46px] text-white tracking-tight leading-tight mb-8">
+              Find Your Next Course
             </h1>
-            <p className="text-[#82868e] text-sm sm:text-base leading-relaxed mt-2 mb-8 max-w-[540px]">
-              Learn something you love from industry creators who are passionate about sharing their knowledge.
-            </p>
 
-            {/* Search Input */}
-            <div className="w-full max-w-xl flex items-center gap-3 p-2 pl-5 bg-white border border-[#e8e9eb] rounded-full shadow-lg shadow-black/5 focus-within:ring-2 focus-within:ring-[#003be2]/20">
-              <Search size={20} className="text-[#82868e] shrink-0" />
-              <input
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search courses, topics, or creators..."
-                className="flex-1 min-w-0 bg-transparent text-[#242528] placeholder-[#82868e] text-sm focus:outline-none"
-              />
-              {query && (
-                <button
-                  onClick={() => setQuery("")}
-                  className="text-xs text-[#82868e] hover:text-[#242528] px-2 py-1"
-                >
-                  Clear
-                </button>
-              )}
-            </div>
+            {/* Centered Pill Search Input with Lime Courses Dropdown */}
+            <div className="relative max-w-xl mx-auto">
+              <div className="w-full flex items-center bg-white rounded-full p-2 pl-6 shadow-2xl transition-shadow focus-within:ring-2 focus-within:ring-[#d4fb20]">
+                <Search size={20} className="text-[#82868e] shrink-0 mr-3" />
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search"
+                  className="flex-1 min-w-0 bg-transparent text-[#242528] placeholder-[#82868e] text-base focus:outline-none"
+                />
+                {query && (
+                  <button
+                    onClick={() => setQuery("")}
+                    className="text-xs text-[#82868e] hover:text-[#242528] px-2 py-1 mr-2 cursor-pointer"
+                  >
+                    Clear
+                  </button>
+                )}
+                <div className="relative">
+                  <button
+                    type="button"
+                    onClick={() => setIsCategoryOpen(!isCategoryOpen)}
+                    className="bg-[#d4fb20] hover:bg-[#c2e915] text-[#111111] font-semibold text-sm px-6 py-2.5 rounded-full inline-flex items-center gap-1.5 transition-colors cursor-pointer shrink-0"
+                  >
+                    <span>{activeCategory === "All courses" ? "Courses" : activeCategory}</span>
+                    <ChevronDown
+                      size={16}
+                      className={`transition-transform duration-200 ${
+                        isCategoryOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
 
-            <div className="flex items-center gap-2 text-xs text-[#82868e] mt-4">
-              <Users size={16} className="text-[#003be2]" />
-              <span>Join over 10,000 learners building their next skill</span>
+                  {isCategoryOpen && (
+                    <div className="absolute right-0 top-full mt-2 w-48 bg-white text-[#242528] rounded-2xl shadow-xl border border-[#e8e9eb] py-2 z-50 text-left">
+                      {categoriesList.map((cat) => (
+                        <button
+                          key={cat}
+                          onClick={() => {
+                            setActiveCategory(cat);
+                            setIsCategoryOpen(false);
+                          }}
+                          className={`w-full px-4 py-2 text-left text-xs font-medium hover:bg-gray-50 flex items-center justify-between cursor-pointer ${
+                            activeCategory === cat ? "text-[#003be2] font-bold bg-blue-50/50" : ""
+                          }`}
+                        >
+                          <span>{cat}</span>
+                          {activeCategory === cat && <Check size={14} />}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -105,7 +126,7 @@ export function SearchCatalog() {
                 COURSE LIBRARY
               </span>
               <h2 className="font-['Poppins',sans-serif] font-semibold text-2xl text-[#242528]">
-                Explore Courses{" "}
+                Explore courses{" "}
                 <span className="text-sm font-normal text-[#82868e]">
                   ({filtered.length})
                 </span>
@@ -129,7 +150,7 @@ export function SearchCatalog() {
 
           {/* Category Tabs & Filter Button */}
           <div className="flex items-center justify-between gap-4 py-6 overflow-x-auto">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               {categoriesList.map((cat) => {
                 const isActive =
                   activeCategory.toLowerCase() === cat.toLowerCase();
@@ -137,10 +158,10 @@ export function SearchCatalog() {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
+                    className={`min-h-[40px] px-5 rounded-full text-[13.5px] font-medium whitespace-nowrap transition-all cursor-pointer ${
                       isActive
-                        ? "bg-[#003be2] text-white shadow-xs"
-                        : "bg-white border border-[#e8e9eb] text-[#4b4c53] hover:border-[#003be2]"
+                        ? "bg-[#d4fb20] text-[#111111] font-semibold border border-[#d4fb20]"
+                        : "bg-white border border-[#e8e9eb] text-[#4b4c53] hover:border-[#c9cdd4]"
                     }`}
                   >
                     {cat}

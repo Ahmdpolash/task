@@ -4,7 +4,7 @@ import { AvatarStack } from "@/components/ui/FloatingCards";
 
 export function GrowthPromoSection() {
   return (
-    <section className="w-full bg-[#f9fafb] py-20 lg:py-28 overflow-hidden border-t border-[#f1f2f4]">
+    <section className="growth-promo-section w-full py-20 lg:py-28 overflow-hidden border-t border-[#f1f2f4]">
       <div className="w-full max-w-[1200px] mx-auto px-6 space-y-28 lg:space-y-36">
         {/* Row 1: Path to Professional Growth */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
@@ -24,7 +24,7 @@ export function GrowthPromoSection() {
             {/* Metrics */}
             <div className="grid grid-cols-3 gap-6 mt-10 pt-8 border-t border-[#e8e9eb] max-w-[420px]">
               <div>
-                <strong className="font-['Poppins',sans-serif] font-bold text-3xl sm:text-4xl text-[#242528] block">
+                <strong className="font-['Poppins',sans-serif] font-bold text-3xl sm:text-4xl text-[#003be2] block">
                   12K
                 </strong>
                 <span className="text-xs sm:text-sm text-[#82868e] mt-1 block">
@@ -32,7 +32,7 @@ export function GrowthPromoSection() {
                 </span>
               </div>
               <div>
-                <strong className="font-['Poppins',sans-serif] font-bold text-3xl sm:text-4xl text-[#242528] block">
+                <strong className="font-['Poppins',sans-serif] font-bold text-3xl sm:text-4xl text-[#003be2] block">
                   70+
                 </strong>
                 <span className="text-xs sm:text-sm text-[#82868e] mt-1 block">
@@ -40,7 +40,7 @@ export function GrowthPromoSection() {
                 </span>
               </div>
               <div>
-                <strong className="font-['Poppins',sans-serif] font-bold text-3xl sm:text-4xl text-[#242528] block">
+                <strong className="font-['Poppins',sans-serif] font-bold text-3xl sm:text-4xl text-[#003be2] block">
                   16
                 </strong>
                 <span className="text-xs sm:text-sm text-[#82868e] mt-1 block">
@@ -52,9 +52,6 @@ export function GrowthPromoSection() {
 
           {/* Right: Art & Floating Badges */}
           <div className="lg:col-span-6 relative flex justify-center items-center">
-            {/* Decorative Background Blob */}
-            <div className="absolute w-[360px] sm:w-[460px] h-[360px] sm:h-[460px] rounded-full bg-gradient-to-tr from-[#003be2]/10 to-[#d4fb20]/25 blur-2xl pointer-events-none -z-10" />
-
             {/* Floating Mini Course Card (Top Left) */}
             <div className="absolute -top-6 -left-2 sm:left-4 z-20 w-52 sm:w-60 bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-white/80 shadow-[0_16px_40px_rgba(7,18,62,0.12)]">
               <div className="relative rounded-xl overflow-hidden aspect-[16/9] mb-2.5">
@@ -64,10 +61,10 @@ export function GrowthPromoSection() {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute bottom-1.5 left-1.5 flex gap-1">
-                  <span className="bg-black/60 text-white text-[9px] px-1.5 py-0.5 rounded-full">
+                  <span className="bg-white/85 text-[#333] text-[9px] px-1.5 py-0.5 rounded-full font-medium backdrop-blur-xs">
                     17 Lessons
                   </span>
-                  <span className="bg-black/60 text-white text-[9px] px-1.5 py-0.5 rounded-full">
+                  <span className="bg-white/85 text-[#333] text-[9px] px-1.5 py-0.5 rounded-full font-medium backdrop-blur-xs">
                     2h 16m
                   </span>
                 </div>
@@ -75,14 +72,14 @@ export function GrowthPromoSection() {
               <b className="text-xs font-semibold text-[#242528] block truncate">
                 Learn Figma from Basic
               </b>
-              <small className="text-[10px] text-[#82868e] block">
+              <small className="text-[10px] text-[#003be2] block font-medium">
                 by purepearl studio
               </small>
               <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-gray-100">
                 <span className="text-[10px] inline-flex items-center gap-1 text-[#4b4c53]">
                   <Signal size={10} className="text-[#003be2]" /> Beginner
                 </span>
-                <b className="text-xs font-bold text-[#242528]">$25</b>
+                <b className="text-xs font-bold text-[#003be2]">$25</b>
               </div>
             </div>
 
@@ -111,7 +108,7 @@ export function GrowthPromoSection() {
                 55%
               </strong>
               <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                <div className="h-full bg-[#003be2] rounded-full" style={{ width: "55%" }} />
+                <div className="h-full bg-[#d4fb20] rounded-full" style={{ width: "55%" }} />
               </div>
             </div>
           </div>
@@ -121,9 +118,6 @@ export function GrowthPromoSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           {/* Left: Art & Badges (Reversed layout) */}
           <div className="lg:col-span-6 relative flex justify-center items-center order-2 lg:order-1">
-            {/* Decorative Background Blob */}
-            <div className="absolute w-[360px] sm:w-[460px] h-[360px] sm:h-[460px] rounded-full bg-gradient-to-br from-[#d4fb20]/30 to-[#003be2]/15 blur-2xl pointer-events-none -z-10" />
-
             {/* Floating Blue Stats Pills (Top Left) */}
             <div className="absolute top-2 -left-2 sm:left-4 z-20 space-y-2">
               <div className="bg-[#003be2] text-white px-4 py-2.5 rounded-2xl shadow-lg flex flex-col min-w-[130px]">
@@ -138,7 +132,7 @@ export function GrowthPromoSection() {
                   <small className="text-[10px] text-[#82868e] block">Year to Date</small>
                   <strong className="text-xs font-bold">$1,200.38</strong>
                 </div>
-                <span className="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+                <span className="text-[10px] font-bold text-[#111] bg-[#d4fb20] px-1.5 py-0.5 rounded-full">
                   +12%
                 </span>
               </div>
@@ -165,7 +159,7 @@ export function GrowthPromoSection() {
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs text-[#82868e] font-medium">Happy Students</span>
                 <div className="flex items-center gap-1 text-xs font-bold text-[#242528]">
-                  4.5 <Star size={11} className="fill-[#003be2] text-[#003be2]" />
+                  4.5 <Star size={11} className="fill-[#d4fb20] text-[#d4fb20]" />
                 </div>
               </div>
               <AvatarStack />

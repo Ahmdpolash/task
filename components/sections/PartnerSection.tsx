@@ -3,18 +3,15 @@ import { partnerLogos } from "@/data/landingData";
 
 export function PartnerSection() {
   return (
-    <section className="w-full bg-white py-12 sm:py-16 border-b border-[#f1f2f4]">
+    <section className="w-full bg-white min-h-[145px] flex items-center border-b border-[#e8e9eb]">
       <div className="w-full max-w-[1200px] mx-auto px-6">
-        <p className="text-center text-xs uppercase tracking-widest text-[#82868e] font-semibold mb-8">
-          Trusted by innovative teams & creators worldwide
-        </p>
-        <div className="flex flex-wrap items-center justify-center sm:justify-between gap-8 sm:gap-12 opacity-80 transition-all hover:opacity-100">
+        <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-10">
           {partnerLogos.map((logo) => (
             <img
               key={logo.id}
               src={logo.src}
               alt={logo.alt}
-              className="h-7 sm:h-9 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+              className="h-[38px] w-auto object-contain opacity-50 grayscale hover:opacity-80 transition-opacity duration-200"
             />
           ))}
         </div>

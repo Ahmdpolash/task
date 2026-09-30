@@ -20,10 +20,10 @@ export default function LessonsPage() {
 
   return (
     <div className="min-h-screen bg-white text-[#242528] flex flex-col justify-between">
-      <Header dark={false} />
+      <Header dark={true} />
 
       <main className="flex-1 pb-20">
-        <CourseIntro activeTab="Lessons" />
+        <CourseIntro activeTab="Lessons" showStage={false} />
 
         <div className="w-full max-w-[1200px] mx-auto px-6 pt-12">
           {/* Curriculum Heading */}
@@ -174,7 +174,7 @@ export default function LessonsPage() {
                     <strong className="text-[#242528]">1 of 112 lessons (7%)</strong>
                   </div>
                   <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div className="h-full bg-[#003be2] rounded-full" style={{ width: "7%" }} />
+                    <div className="h-full bg-[#d4fb20] rounded-full" style={{ width: "7%" }} />
                   </div>
                 </div>
 

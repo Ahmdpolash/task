@@ -20,10 +20,10 @@ export default function ReviewsPage() {
 
   return (
     <div className="min-h-screen bg-white text-[#242528] flex flex-col justify-between">
-      <Header dark={false} />
+      <Header dark={true} />
 
       <main className="flex-1 pb-20">
-        <CourseIntro activeTab="Reviews" />
+        <CourseIntro activeTab="Reviews" showStage={false} />
 
         <div className="w-full max-w-[1200px] mx-auto px-6 pt-12">
           {/* Header Row & Summary */}
@@ -66,11 +66,11 @@ export default function ReviewsPage() {
               {ratingBars.map((bar) => (
                 <div key={bar.stars} className="flex items-center gap-3 text-xs text-[#4b4c53]">
                   <span className="w-8 font-medium flex items-center gap-1">
-                    {bar.stars} <Star size={12} className="fill-[#003be2] text-[#003be2]" />
+                    {bar.stars} <Star size={12} className="fill-[#d4fb20] text-[#d4fb20]" />
                   </span>
                   <div className="flex-1 h-2 rounded-full bg-gray-200 overflow-hidden">
                     <div
-                      className="h-full bg-[#003be2] rounded-full"
+                      className="h-full bg-[#d4fb20] rounded-full"
                       style={{ width: `${bar.pct}%` }}
                     />
                   </div>
@@ -95,7 +95,7 @@ export default function ReviewsPage() {
                     onClick={() => setSelectedFilter(filter)}
                     className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${
                       isActive
-                        ? "bg-[#003be2] text-white shadow-xs"
+                        ? "bg-[#d4fb20] text-[#111111] shadow-xs"
                         : "bg-white border border-[#e8e9eb] text-[#4b4c53] hover:border-[#003be2]"
                     }`}
                   >

@@ -8,11 +8,36 @@ interface TagFilterSectionProps {
   onSelectTag?: (tag: string) => void;
 }
 
+const tagRows = [
+  [
+    "Featured",
+    "Music",
+    "Drawing & Painting",
+    "Marketing",
+    "Animation",
+    "Social Media",
+    "UI/UX Design",
+    "Creative Marketing",
+  ],
+  [
+    "Digital Illustration",
+    "Film & Video",
+    "Crafts",
+    "Freelance & Entrepreneurship",
+    "Graphic Design",
+    "Photography",
+  ],
+  [
+    "Productivity",
+    "Web Development",
+    "Data Science",
+    "Cooking",
+  ],
+];
+
 export function TagFilterSection({ onSelectTag }: TagFilterSectionProps) {
   const [selectedTag, setSelectedTag] = useState("Featured");
   const [showAll, setShowAll] = useState(false);
-
-  const displayedTags = showAll ? tagFilterOptions : tagFilterOptions.slice(0, 14);
 
   const handleTagClick = (tag: string) => {
     setSelectedTag(tag);
@@ -22,38 +47,66 @@ export function TagFilterSection({ onSelectTag }: TagFilterSectionProps) {
   };
 
   return (
-    <section className="w-full bg-white py-16 sm:py-24">
-      <div className="w-full max-w-[1200px] mx-auto px-6">
+    <section className="relative w-full bg-white pt-20 pb-10 overflow-hidden">
+      {/* Subtle Ambient Blobs */}
+      <div className="absolute top-12 left-10 w-96 h-96 bg-[#003be2]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-8 right-10 w-96 h-96 bg-[#d4fb20]/15 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6">
         <SectionHeading
           centered
           title="Discover Your Passion, Build Your Skills"
           description="At Bytespace Courses, we bring you closer to life-changing knowledge. Explore a variety of courses across different fields, from technology to the arts, and make a difference in your career and life."
         />
 
-        <div className="mt-12 flex flex-wrap justify-center gap-2.5 sm:gap-3 max-w-[1040px] mx-auto">
-          {displayedTags.map((tag) => {
-            const isActive = selectedTag === tag;
-            return (
-              <button
-                key={tag}
-                onClick={() => handleTagClick(tag)}
-                className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer select-none ${
-                  isActive
-                    ? "bg-[#003be2] text-white shadow-md shadow-[#003be2]/20 font-semibold"
-                    : "bg-white text-[#4b4c53] border border-[#e8e9eb] hover:border-[#003be2] hover:text-[#003be2]"
-                }`}
-              >
-                {tag}
-              </button>
-            );
-          })}
-          {!showAll && tagFilterOptions.length > 14 && (
-            <button
-              onClick={() => setShowAll(true)}
-              className="px-5 py-2.5 rounded-full text-sm font-medium border border-[#e8e9eb] bg-gray-50 text-[#82868e] hover:bg-gray-100 hover:text-[#242528] transition-all cursor-pointer"
-            >
-              + More
-            </button>
+        <div className="mt-11 flex flex-col items-center gap-3.5 max-w-[1040px] mx-auto">
+          {tagRows.map((row, rowIdx) => (
+            <div key={rowIdx} className="flex flex-wrap justify-center items-center gap-3">
+              {row.map((tag) => {
+                const isActive = selectedTag === tag;
+                return (
+                  <button
+                    key={tag}
+                    onClick={() => handleTagClick(tag)}
+                    className={`min-h-[42px] px-5 rounded-[24px] text-[13.5px] font-medium transition-all duration-200 cursor-pointer border-0 ${
+                      isActive
+                        ? "bg-[#d4fb20] text-[#111111] font-semibold shadow-xs"
+                        : "bg-[#e9ecef] text-[#3b3f46] hover:bg-[#dfe2e6]"
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                );
+              })}
+              {rowIdx === tagRows.length - 1 && (
+                <button
+                  onClick={() => setShowAll(!showAll)}
+                  className="min-h-[42px] px-4 rounded-[24px] text-[13.5px] font-semibold text-[#003be2] bg-transparent hover:text-[#092bb5] transition-colors cursor-pointer"
+                >
+                  {showAll ? "- Less" : "+ More"}
+                </button>
+              )}
+            </div>
+          ))}
+          {showAll && (
+            <div className="flex flex-wrap justify-center items-center gap-3 mt-1 pt-2 animate-in fade-in duration-300">
+              {["Artificial Intelligence", "Machine Learning", "Mobile Apps", "Public Speaking", "Writing", "3D Modeling"].map((tag) => {
+                const isActive = selectedTag === tag;
+                return (
+                  <button
+                    key={tag}
+                    onClick={() => handleTagClick(tag)}
+                    className={`min-h-[42px] px-5 rounded-[24px] text-[13.5px] font-medium transition-all duration-200 cursor-pointer border-0 ${
+                      isActive
+                        ? "bg-[#d4fb20] text-[#111111] font-semibold"
+                        : "bg-[#e9ecef] text-[#3b3f46] hover:bg-[#dfe2e6]"
+                    }`}
+                  >
+                    {tag}
+                  </button>
+                );
+              })}
+            </div>
           )}
         </div>
       </div>
