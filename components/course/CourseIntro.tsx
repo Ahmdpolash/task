@@ -18,11 +18,13 @@ import {
 interface CourseIntroProps {
   activeTab?: "About" | "Lessons" | "Reviews";
   showStage?: boolean;
+  onTabChange?: (tab: "About" | "Lessons" | "Reviews") => void;
 }
 
 export function CourseIntro({
   activeTab = "About",
   showStage = true,
+  onTabChange,
 }: CourseIntroProps) {
   const [copied, setCopied] = useState(false);
   const courseTitle = "Build Digital Asset: A Comprehensive Guide";
@@ -34,6 +36,12 @@ export function CourseIntro({
       setTimeout(() => setCopied(false), 2000);
     }
   };
+
+  const tabs: Array<{ label: "About" | "Lessons" | "Reviews"; href: string }> = [
+    { label: "About", href: "/course" },
+    { label: "Lessons", href: "/lessons" },
+    { label: "Reviews", href: "/reviews" },
+  ];
 
   return (
     <div className="w-full">
@@ -212,24 +220,36 @@ export function CourseIntro({
         </div>
       </section>
 
-      {/* Sub-Navigation Tabs on clean white background */}
-      <div className="w-full bg-white border-b border-[#e8e9eb]">
-        <div className="w-full max-w-[1200px] mx-auto px-6">
-          <div className="flex items-center gap-8 pt-2">
-            {[
-              { label: "About", href: "/course" },
-              { label: "Lessons", href: "/lessons" },
-              { label: "Reviews", href: "/reviews" },
-            ].map((tab) => {
+      {/* Pill-shaped Sub-Navigation Tabs matching Figma screenshots */}
+      <div className="w-full bg-white">
+        <div className="w-full max-w-[1200px] mx-auto px-6 pt-8 pb-4">
+          <div className="flex items-center gap-3">
+            {tabs.map((tab) => {
               const isActive = activeTab === tab.label;
+              if (onTabChange) {
+                return (
+                  <button
+                    key={tab.label}
+                    type="button"
+                    onClick={() => onTabChange(tab.label)}
+                    className={`px-6 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer ${
+                      isActive
+                        ? "bg-[#d4fb20] text-[#111111] shadow-xs"
+                        : "bg-[#f1f2f4] text-[#242528] hover:bg-[#e4e5e7]"
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              }
               return (
                 <Link
                   key={tab.label}
                   href={tab.href}
-                  className={`py-3.5 text-sm font-semibold border-b-2 -mb-[1px] transition-colors ${
+                  className={`px-6 py-2 rounded-full text-sm font-semibold transition-all inline-block ${
                     isActive
-                      ? "border-[#003be2] text-[#003be2]"
-                      : "border-transparent text-[#82868e] hover:text-[#242528]"
+                      ? "bg-[#d4fb20] text-[#111111] shadow-xs"
+                      : "bg-[#f1f2f4] text-[#242528] hover:bg-[#e4e5e7]"
                   }`}
                 >
                   {tab.label}

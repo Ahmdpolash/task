@@ -1,126 +1,157 @@
 "use client";
 
 import React, { useState } from "react";
-import { Heart, Star } from "lucide-react";
+import { Star } from "lucide-react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CourseIntro } from "@/components/course/CourseIntro";
-import { courseReviews } from "@/data/landingData";
+
+const reviewsData = [
+  {
+    name: "PurePearl Studio",
+    role: "UI/UX Designer",
+    date: "a year ago",
+    avatar: "/images/comm2.png",
+    rating: 5,
+    body: '"The course provided me with a comprehensive understanding of digital asset creation. The lessons were in-depth, practical, and immediately applicable to my work. Highly recommended!"',
+  },
+  {
+    name: "Albert Flores",
+    role: "UI/UX Designer",
+    date: "a year ago",
+    avatar: "/images/comm1.png",
+    rating: 5,
+    body: '"This course transformed my approach to digital design. The combination of theory, hands-on exercises, and real-world applications made it a truly enriching experience. Excited to implement what I\'ve learned!"',
+  },
+  {
+    name: "Cody Fisher",
+    role: "UI/UX Designer",
+    date: "a year ago",
+    avatar: "/images/comm3.png",
+    rating: 5,
+    body: '"The project showcase and critique module created a collaborative environment where I could showcase my work, receive valuable feedback, and refine my skills."',
+  },
+  {
+    name: "Brooklyn Simmons",
+    role: "Product Designer",
+    date: "a year ago",
+    avatar: "/images/comm1.png",
+    rating: 4,
+    body: '"The lessons on optimizing digital assets for various platforms were particularly insightful. The course adapts to the evolving digital landscape with clear, structured steps."',
+  },
+];
 
 export default function ReviewsPage() {
   const [selectedFilter, setSelectedFilter] = useState("All rating");
 
-  const ratingBars = [
-    { stars: 5, pct: 74, count: 532 },
-    { stars: 4, pct: 15, count: 120 },
-    { stars: 3, pct: 6, count: 42 },
-    { stars: 2, pct: 3, count: 18 },
-    { stars: 1, pct: 2, count: 8 },
-  ];
+  const filtered = reviewsData.filter((r) => {
+    if (selectedFilter === "All rating") return true;
+    const starNum = parseInt(selectedFilter.replace(/[^\d]/g, ""), 10);
+    return r.rating === starNum;
+  });
 
   return (
     <div className="min-h-screen bg-white text-[#242528] flex flex-col justify-between">
       <Header dark={true} />
 
-      <main className="flex-1 pb-20">
+      <main className="flex-1 pb-24">
         <CourseIntro activeTab="Reviews" showStage={false} />
 
-        <div className="w-full max-w-[1200px] mx-auto px-6 pt-12">
-          {/* Header Row & Summary */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-[#f1f2f4]">
-            <div>
-              <span className="text-[#003be2] text-xs font-bold tracking-widest uppercase mb-1 block">
-                LEARNER FEEDBACK
-              </span>
-              <h2 className="font-['Poppins',sans-serif] font-semibold text-3xl sm:text-4xl text-[#242528]">
-                What Learners Are Saying
-              </h2>
-              <p className="text-[#82868e] text-sm sm:text-base leading-relaxed mt-2 max-w-[540px]">
-                Discover what our learners have to say about their experience with this course and its real-world impact.
-              </p>
-            </div>
+        <div className="w-full max-w-[1200px] mx-auto px-6 pt-4">
+          <div className="max-w-[860px]">
+            <h2 className="font-['Poppins',sans-serif] font-bold text-2xl sm:text-3xl text-[#242528] mb-3">
+              What Learners Are Saying
+            </h2>
+            <p className="text-[#4b4c53] text-sm sm:text-base leading-relaxed mb-8">
+              Discover what our learners have to say about their experience with &apos;Build Digital Assets: A Comprehensive Guide.&apos; Read reviews and ratings from individuals who have embarked on the transformative journey of mastering digital asset creation.
+            </p>
 
-            <div className="bg-[#f8f9fa] border border-[#e8e9eb] rounded-2xl p-5 flex items-center gap-4 shrink-0">
-              <strong className="font-['Poppins',sans-serif] font-bold text-4xl text-[#242528]">
-                4.7
-              </strong>
-              <div>
-                <div className="flex items-center gap-1 text-[#003be2]">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} size={15} fill="currentColor" />
-                  ))}
-                </div>
-                <span className="text-xs text-[#82868e] mt-1 block">
-                  Based on <b className="text-[#242528]">720</b> reviews
+            {/* Ratings Summary Box matching Image 1 */}
+            <div className="bg-white rounded-3xl border border-[#e8e9eb] p-6 sm:p-8 flex flex-col sm:flex-row items-center gap-8 mb-10 shadow-xs">
+              {/* Lime Ratings Square */}
+              <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-2xl bg-[#d4fb20] flex flex-col items-center justify-center shrink-0 shadow-xs">
+                <span className="text-xs font-bold text-[#111111] uppercase tracking-wider">
+                  Ratings
                 </span>
+                <strong className="font-['Poppins',sans-serif] font-extrabold text-4xl sm:text-5xl text-[#111111] mt-1">
+                  4.7
+                </strong>
+              </div>
+
+              {/* 5 Rating Breakdown Bars */}
+              <div className="flex-1 w-full space-y-3">
+                {[
+                  { pct: 95, count: 720 },
+                  { pct: 32, count: 120 },
+                  { pct: 10, count: 21 },
+                  { pct: 6, count: 12 },
+                  { pct: 8, count: 16 },
+                ].map((row, idx) => (
+                  <div key={idx} className="flex items-center gap-3 sm:gap-4 text-xs">
+                    {/* Bar track */}
+                    <div className="flex-1 h-2 rounded-full bg-[#f1f2f4] overflow-hidden">
+                      <div
+                        className="h-full bg-[#d4fb20] rounded-full"
+                        style={{ width: `${row.pct}%` }}
+                      />
+                    </div>
+                    {/* 5 Stars */}
+                    <div className="flex items-center gap-0.5 text-[#242528] shrink-0">
+                      {Array.from({ length: 5 }).map((_, s) => (
+                        <Star key={s} size={12} fill="currentColor" />
+                      ))}
+                    </div>
+                    {/* Count number */}
+                    <span className="w-8 text-right font-medium text-[#4b4c53] shrink-0">
+                      {row.count}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
 
-          {/* Ratings Overview Bar Breakdown */}
-          <div className="my-10 p-6 sm:p-8 rounded-3xl bg-[#f8f9fa] border border-[#e8e9eb] max-w-xl">
-            <h3 className="font-['Poppins',sans-serif] font-semibold text-lg text-[#242528] mb-5">
-              Rating Breakdown
-            </h3>
-            <div className="space-y-3">
-              {ratingBars.map((bar) => (
-                <div key={bar.stars} className="flex items-center gap-3 text-xs text-[#4b4c53]">
-                  <span className="w-8 font-medium flex items-center gap-1">
-                    {bar.stars} <Star size={12} className="fill-[#d4fb20] text-[#d4fb20]" />
-                  </span>
-                  <div className="flex-1 h-2 rounded-full bg-gray-200 overflow-hidden">
-                    <div
-                      className="h-full bg-[#d4fb20] rounded-full"
-                      style={{ width: `${bar.pct}%` }}
-                    />
-                  </div>
-                  <span className="w-10 text-right text-[#82868e]">{bar.count}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Individual Reviews Filter Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-[#f1f2f4]">
-            <h3 className="font-['Poppins',sans-serif] font-semibold text-xl text-[#242528]">
-              Individual Reviews <span className="text-sm text-[#82868e] font-normal">(720)</span>
+            {/* Individual Reviews Section */}
+            <h3 className="font-['Poppins',sans-serif] font-bold text-xl sm:text-2xl text-[#242528] mb-4">
+              Individual Reviews:
             </h3>
 
-            <div className="flex items-center gap-2 overflow-x-auto pb-1">
-              {["All rating", "5 ★", "4 ★", "3 ★", "2 ★", "1 ★"].map((filter) => {
-                const isActive = selectedFilter === filter;
+            {/* Filter Pills row */}
+            <div className="flex items-center gap-2.5 overflow-x-auto pb-6">
+              {["All rating", "★ 5", "★ 4", "★ 3", "★ 2", "★ 1"].map((f) => {
+                const isActive = selectedFilter === f;
                 return (
                   <button
-                    key={filter}
-                    onClick={() => setSelectedFilter(filter)}
-                    className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all cursor-pointer whitespace-nowrap ${
+                    key={f}
+                    type="button"
+                    onClick={() => setSelectedFilter(f)}
+                    className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer whitespace-nowrap ${
                       isActive
                         ? "bg-[#d4fb20] text-[#111111] shadow-xs"
-                        : "bg-white border border-[#e8e9eb] text-[#4b4c53] hover:border-[#003be2]"
+                        : "bg-[#f1f2f4] text-[#242528] hover:bg-[#e4e5e7]"
                     }`}
                   >
-                    {filter}
+                    {f}
                   </button>
                 );
               })}
             </div>
-          </div>
 
-          {/* Reviews Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-8">
-            {courseReviews.map((review, i) => (
-              <article
-                key={review.name}
-                className="p-6 sm:p-7 rounded-2xl border border-[#e8e9eb] bg-white flex flex-col justify-between hover:shadow-md transition-shadow"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-3 mb-4">
-                    <div className="flex items-center gap-3">
-                      <span className="w-10 h-10 rounded-full bg-[#003be2] text-white text-xs font-bold flex items-center justify-center">
-                        {review.initials}
-                      </span>
+            {/* Review Cards matching Image 1 */}
+            <div className="space-y-5">
+              {filtered.map((review, i) => (
+                <article
+                  key={i}
+                  className="p-6 sm:p-7 rounded-3xl border border-[#e8e9eb] bg-white space-y-4 shadow-xs"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-3.5">
+                      <img
+                        src={review.avatar}
+                        alt={review.name}
+                        className="w-11 h-11 rounded-full object-cover shrink-0"
+                      />
                       <div>
-                        <strong className="text-sm font-semibold text-[#242528] block">
+                        <strong className="text-sm font-bold text-[#242528] block">
                           {review.name}
                         </strong>
                         <span className="text-xs text-[#82868e] block">
@@ -131,51 +162,20 @@ export default function ReviewsPage() {
                     <span className="text-xs text-[#82868e]">{review.date}</span>
                   </div>
 
-                  <div className="flex items-center gap-1 text-[#003be2] mb-3">
-                    {Array.from({ length: 5 }).map((_, idx) => (
-                      <Star key={idx} size={14} fill="currentColor" />
+                  {/* 5 Dark Stars */}
+                  <div className="flex items-center gap-1 text-[#242528]">
+                    {Array.from({ length: 5 }).map((_, starIdx) => (
+                      <Star key={starIdx} size={14} fill="currentColor" />
                     ))}
                   </div>
 
+                  {/* Body Text */}
                   <p className="text-xs sm:text-sm text-[#4b4c53] leading-relaxed">
                     {review.body}
                   </p>
-                </div>
-
-                <div className="mt-5 pt-4 border-t border-[#f5f5f6]">
-                  <button
-                    type="button"
-                    className="inline-flex items-center gap-1.5 text-xs text-[#82868e] hover:text-red-500 transition-colors cursor-pointer"
-                  >
-                    <Heart size={14} />
-                    <span>Helpful ({12 + i * 5})</span>
-                  </button>
-                </div>
-              </article>
-            ))}
-          </div>
-
-          {/* Pagination */}
-          <div className="flex justify-center items-center gap-2 mt-12">
-            <button className="w-9 h-9 rounded-full border border-[#e8e9eb] flex items-center justify-center text-xs font-medium hover:bg-gray-50">
-              ‹
-            </button>
-            <button className="w-9 h-9 rounded-full bg-[#003be2] text-white flex items-center justify-center text-xs font-bold">
-              1
-            </button>
-            <button className="w-9 h-9 rounded-full border border-[#e8e9eb] flex items-center justify-center text-xs font-medium hover:bg-gray-50">
-              2
-            </button>
-            <button className="w-9 h-9 rounded-full border border-[#e8e9eb] flex items-center justify-center text-xs font-medium hover:bg-gray-50">
-              3
-            </button>
-            <span className="text-xs text-gray-400">…</span>
-            <button className="w-9 h-9 rounded-full border border-[#e8e9eb] flex items-center justify-center text-xs font-medium hover:bg-gray-50">
-              72
-            </button>
-            <button className="w-9 h-9 rounded-full border border-[#e8e9eb] flex items-center justify-center text-xs font-medium hover:bg-gray-50">
-              ›
-            </button>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </main>
